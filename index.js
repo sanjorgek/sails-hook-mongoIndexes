@@ -4,11 +4,8 @@ var reg = new RegExp(/[Mm]ongo[Dd][Bb]/);
 module.exports = function indexes(sails) {
   return {
     defaults: {
-      indexes: {
-        host: 'localhost',
-        port: 27017,
-        database: 'test'
-      }
+      mongoindexes: {
+        url: 'mongodb://localhost:27017/test'}
     },
     configure: function () {
       var name = this.configKey;
@@ -17,7 +14,7 @@ module.exports = function indexes(sails) {
         var keys = Object.keys(sails.config['connections']);
         keys.forEach(function(item) {
           if(reg.test(item)){
-            sails.config[name] = sails.config['connections'].item;
+            sails.config[name].url = sails.config['connections'][item];
           }
         }, this);
       }
@@ -25,9 +22,6 @@ module.exports = function indexes(sails) {
     initialize: function (cb) {
       if(sails.models){
         var nameModels = Object.keys(sails.models);
-        nameModels.forEach(function(item) {
-          console.log(item);
-        }, this);
         mapModels(nameModels,cb);
       }else cb();
     }
@@ -41,6 +35,9 @@ function mapModels(names,cb) {
 
 function iterCollection(name,cb){
   async.mapLimit(sails.models[name].index,1,function iterIndex(item, next) {
+    mongo.connect(sails.config.mongoindexes.url, function (err, db) {
+      console.log(err);
+    });
     next();
   }, cb)
 };
