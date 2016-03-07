@@ -1,5 +1,5 @@
 {
-  "name": "sails-hook-mongoIndexes",
+  "name": "sails-hook-mongoindexes",
   "version": "0.3.1",
   "description": "Hook para sails que permite escribir los indices de mongoDB",
   "main": "index.js",

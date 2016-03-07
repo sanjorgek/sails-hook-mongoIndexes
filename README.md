@@ -1,4 +1,4 @@
-# sails-hook-mongoIndexes
+# sails-hook-mongoindexes
 Hook for sails and mongoDB
 
 ## Info
