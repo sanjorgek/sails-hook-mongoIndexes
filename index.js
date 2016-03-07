@@ -3,10 +3,7 @@ var reg = new RegExp(/[Mm]ongo[Dd][Bb]/);
 
 module.exports = function indexes(sails) {
   return {
-    defaults: {
-      mongoindexes: {
-        url: 'mongodb://localhost:27017/test'}
-    },
+    //defaults: {mongoindexes: {url: 'mongodb://localhost:27017/test'}},
     configure: function () {
       var name = this.configKey;
       sails.config.globals.async = true;
@@ -21,7 +18,9 @@ module.exports = function indexes(sails) {
             if(connections.host!='localhost') host= connections.host;
             if(connections.port!=27017) port=connections.port;
             if(connections.database!='test') database=connections.database;
-            sails.config[name].url = 'mongodb://'+host+':'+port+'/'+database;
+            sails.config[name] = {
+              url : 'mongodb://'+host+':'+port+'/'+database
+            };
           }
 
         }, this);
