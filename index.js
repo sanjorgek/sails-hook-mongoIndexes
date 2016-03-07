@@ -12,6 +12,7 @@ module.exports = function indexes(sails) {
     },
     configure: function () {
       var name = this.configKey;
+      sails.config.globals.async = true;
       if(sails.config['connections']){
         var keys = Object.keys(sails.config['connections']);
         keys.forEach(function(item) {
