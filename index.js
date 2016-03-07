@@ -1,4 +1,5 @@
 var mongo = require('mongodb').MongoClient;
+var reg = new RegExp(/[Mm]ongo[Dd][Bb]/);
 
 module.exports = function indexes(sails) {
   return {
@@ -9,7 +10,17 @@ module.exports = function indexes(sails) {
         database: 'test'
       }
     },
-    //configure: function () {},
+    configure: function () {
+      var name = this.configKey;
+      if(sails.config['connections']){
+        var keys = Object.keys(sails.config['connections']);
+        keys.forEach(function(item) {
+          if(reg.test(item)){
+            sails.config[name] = sails.config['connections'].item;
+          }
+        }, this);
+      }
+    },
     //initialize: function (cb) {},
     //routes: {}
   }
