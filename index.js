@@ -39,8 +39,7 @@ function iterCollection(name,cb){
       if(err) next(err);
       else{
         var collection = db.collection(name);
-        next();
-				//collection.createIndex(item.ind,item.ops, cb);
+        collection.createIndex(item.ind,item.ops,next);
       }
     });
   }, cb)
