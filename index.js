@@ -13,8 +13,8 @@ module.exports = function indexes(sails) {
       if(sails.config['connections']){
         var keys = Object.keys(sails.config['connections']);
         keys.forEach(function(item) {
-          if(reg.test(item)){
-            sails.config[name].url = sails.config['connections'][item];
+          if(reg.test(item) && sails.config['connections'][item].host!='localhost' && sails.config['connections'][item].port!=2717 && sails.config['connections'][item].database!='test'){
+            sails.config[name].url = 'mongodb://'+sails.config['connections'][item].host+'/'+sails.config['connections'][item].port+'/'+sails.config['connections'][item]+'/'+sails.config['connections'][item].database;
           }
         }, this);
       }
@@ -35,9 +35,9 @@ function mapModels(names,cb) {
 
 function iterCollection(name,cb){
   async.mapLimit(sails.models[name].index,1,function iterIndex(item, next) {
+    
     mongo.connect(sails.config.mongoindexes.url, function (err, db) {
-      console.log(err);
+      next();
     });
-    next();
   }, cb)
 };
