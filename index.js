@@ -13,9 +13,15 @@ module.exports = function indexes(sails) {
       if(sails.config['connections']){
         var keys = Object.keys(sails.config['connections']);
         keys.forEach(function(item) {
-	
-          if(reg.test(item) && (sails.config['connections'][item].host!='localhost' || sails.config['connections'][item].port!=27017 || sails.config['connections'][item].database!='test')){
-            sails.config[name].url = 'mongodb://'+sails.config['connections'][item].host+':'+sails.config['connections'][item].port+'/'+sails.config['connections'][item].database;
+          var connections = sails.config['connections'][item];
+          if(reg.test(item)){
+            var host = 'localhost';
+            var port = 27017;
+            var database = 'test';
+            if(connections.host!='localhost') host= connections.host;
+            if(connections.port!=27017) port=connections.port;
+            if(connections.database!='test') database=connections.database;
+            sails.config[name].url = 'mongodb://'+host+':'+port+'/'+database;
           }
 
         }, this);
