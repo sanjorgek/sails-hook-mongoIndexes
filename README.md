@@ -4,7 +4,7 @@ Hook for sails and mongoDB
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
 
-## Info
+## About
 This hook allows us to write indexes for mongoDB 
 
 ## Use
@@ -12,9 +12,7 @@ Install
 ~~~
 npm install sails-hook-mongoindexes
 ~~~
-
 In models, example User.js
-
 ~~~js
 module.exports = {
   //Put names on your fields
@@ -27,7 +25,7 @@ module.exports = {
   //And here your indexes for that fields
   index: [
     {
-      //Now you can index unique filds
+      //Now you can index unique fields
       ind:{userName:1},
       ops: {
         unique: true,
@@ -53,8 +51,12 @@ module.exports = {
   ]
 };
 ~~~
-
 Thats all folks!
+
+## Info
+This app set true async in sails.config.globals when configures this hook.
+
+
 
 [npm-image]: https://img.shields.io/npm/v/sails-hook-mongoindexes.svg
 [npm-url]: https://npmjs.org/package/sails-hook-mongoindexes
