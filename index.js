@@ -1,3 +1,8 @@
 module.exports = function indexes(sails) {
-  return {}
+  return {
+    //defaults: function () {},
+    //configure: function () {},
+    //initialize: function () {},
+    //routes: function () {}
+  }
 }
