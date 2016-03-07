@@ -18,8 +18,8 @@ module.exports = {
   //Put names on your fields
   atributes:{
     name: 'string',
-    lastName: 'string,
-    userName: 'string,
+    lastName: 'string',
+    userName: 'string',
     password: 'string',    
   },
   //And here your indexes for that fields
