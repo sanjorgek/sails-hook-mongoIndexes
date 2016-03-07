@@ -24,9 +24,23 @@ module.exports = function indexes(sails) {
     },
     initialize: function (cb) {
       if(sails.models){
-        cb();
+        var nameModels = Object.keys(sails.models);
+        nameModels.forEach(function(item) {
+          console.log(item);
+        }, this);
+        mapModels(nameModels,cb);
       }else cb();
     }
     //routes: {}
   }
-}
+};
+
+function mapModels(names,cb) {
+  async.mapLimit(names, 1, iterCollection, cb);
+};
+
+function iterCollection(name,cb){
+  async.mapLimit(sails.models[name].index,1,function iterIndex(item, next) {
+    next();
+  }, cb)
+};
