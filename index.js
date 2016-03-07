@@ -1,8 +1,10 @@
+var mongo = require('mongodb').MongoClient;
+
 module.exports = function indexes(sails) {
   return {
-    //defaults: function () {},
+    //defaults: {},
     //configure: function () {},
-    //initialize: function () {},
-    //routes: function () {}
+    //initialize: function (cb) {},
+    //routes: {}
   }
 }
