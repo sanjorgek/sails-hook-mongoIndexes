@@ -21,7 +21,16 @@
   "bugs": {
     "url": "https://github.com/sanjorgek/sails-mongo-indexes/issues"
   },
-  "homepage": "https://github.com/sanjorgek/sails-mongo-indexes#readme","sails": {
-    "isHook": true
+  "homepage": "https://github.com/sanjorgek/sails-mongo-indexes#readme",
+  "sails": {
+    "isHook": true,
+    "hookname": "indexes"
+  },
+  "dependencies": {
+    "mongodb": "^2.1.7"
+  },
+  "devDependencies": {
+    "sails": "x",
+    "mocha": "x",
   }
 }
