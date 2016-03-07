@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-mongoindexes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hook para sails que permite escribir los indices de mongoDB",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanjorgek/git@github.com:sanjorgek/sails-hook-mongoIndexes.git.git"
+    "url": "git+https://github.com/sanjorgek/sails-hook-mongoIndexes.git"
   },
   "keywords": [
     "sails",
@@ -19,9 +19,9 @@
   "author": "SanJorgeK",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sanjorgek/git@github.com:sanjorgek/sails-hook-mongoIndexes.git/issues"
+    "url": "https://github.com/sanjorgek/sails-hook-mongoIndexes/issues"
   },
-  "homepage": "https://github.com/sanjorgek/git@github.com:sanjorgek/sails-hook-mongoIndexes.git#readme",
+  "homepage": "https://github.com/sanjorgek/sails-hook-mongoIndexes#readme",
   "sails": {
     "isHook": true,
     "hookname": "mongoindexes"
