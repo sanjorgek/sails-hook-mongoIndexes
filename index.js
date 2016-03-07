@@ -35,9 +35,13 @@ function mapModels(names,cb) {
 
 function iterCollection(name,cb){
   async.mapLimit(sails.models[name].index,1,function iterIndex(item, next) {
-    
     mongo.connect(sails.config.mongoindexes.url, function (err, db) {
-      next();
+      if(err) next(err);
+      else{
+        var collection = db.collection(name);
+        next();
+				//collection.createIndex(item.ind,item.ops, cb);
+      }
     });
   }, cb)
 };

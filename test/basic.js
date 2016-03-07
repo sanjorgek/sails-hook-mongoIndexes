@@ -11,7 +11,7 @@ describe('Basic tests ::', function() {
     Sails().lift({
       hooks: {
         // Load the hook
-        "indexes": require('../'),
+        "mongoindexes": require('../'),
         // Skip grunt (unless your hook uses it)
         "grunt": false
       },
