@@ -21,7 +21,11 @@ module.exports = function indexes(sails) {
         }, this);
       }
     },
-    //initialize: function (cb) {},
+    initialize: function (cb) {
+      if(sails.models){
+        cb();
+      }else cb();
+    }
     //routes: {}
   }
 }
