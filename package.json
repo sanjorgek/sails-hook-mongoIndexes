@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanjorgek/sails-mongo-indexes.git"
+    "url": "git+https://github.com/sanjorgek/git@github.com:sanjorgek/sails-hook-mongoIndexes.git.git"
   },
   "keywords": [
     "sails",
@@ -19,9 +19,9 @@
   "author": "SanJorgeK",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sanjorgek/sails-mongo-indexes/issues"
+    "url": "https://github.com/sanjorgek/git@github.com:sanjorgek/sails-hook-mongoIndexes.git/issues"
   },
-  "homepage": "https://github.com/sanjorgek/sails-mongo-indexes#readme",
+  "homepage": "https://github.com/sanjorgek/git@github.com:sanjorgek/sails-hook-mongoIndexes.git#readme",
   "sails": {
     "isHook": true,
     "hookname": "indexes"
