@@ -51,11 +51,10 @@ module.exports = {
   ]
 };
 ~~~
-Thats all folks!
+Thats all!
 
 ## Info
 This app set true async in sails.config.globals when configures this hook.
-
 
 
 [npm-image]: https://img.shields.io/npm/v/sails-hook-mongoindexes.svg
