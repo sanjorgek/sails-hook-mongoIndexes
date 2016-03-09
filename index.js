@@ -31,19 +31,18 @@ module.exports = function indexes(sails) {
             );            
           }
         }, this);
-      }else sails.config[name].urls.push(
-        'mongodb://'+host+':'+port+'/'+database
-      );
+      }
     },
     //Start hook
     initialize: function (cb) {
+      sails.log.info('Initialize indexes');
       async.mapLimit(
         sails.config.mongoindexes.urls,
         1,
-        function (item, next) {
+        function (url, next) {
           if(sails.models){
             var nameModels = Object.keys(sails.models);
-            mapModels(nameModels,next);
+            mapModels(url,nameModels,next);
           }else next();
         },
         cb
@@ -54,18 +53,20 @@ module.exports = function indexes(sails) {
   }
 };
 
-function mapModels(names,cb) {
-  async.mapLimit(names, 1, iterCollection, cb);
+function mapModels(url, names,cb) {
+  async.mapLimit(names, 1, iterCollection(url), cb);
 };
 
-function iterCollection(name,cb){
-  async.map(sails.models[name].index,function iterIndex(item, next) {
-    mongo.connect(sails.config.mongoindexes.url, function (err, db) {
-      if(err) next(err);
-      else{
-        var collection = db.collection(name);
-        collection.createIndex(item.ind,item.ops,next);
-      }
-    });
-  }, cb);
+function iterCollection(url){
+  return function(name,cb){
+    async.map(sails.models[name].index,function iterIndex(item, next) {
+      mongo.connect(url, function (err, db) {
+        if(err) next(err);
+        else{
+          var collection = db.collection(name);
+          collection.createIndex(item.ind,item.ops,next);
+        }
+      });
+    }, cb);
+  }
 };
