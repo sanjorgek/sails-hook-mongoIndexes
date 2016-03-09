@@ -13,6 +13,7 @@
   "keywords": [
     "sails",
     "hooks",
+    "hook",
     "mongodb",
     "node"
   ],

@@ -3,35 +3,53 @@ var reg = new RegExp(/[Mm]ongo[Dd][Bb]/);
 
 module.exports = function indexes(sails) {
   return {
-    //defaults: {mongoindexes: {url: 'mongodb://localhost:27017/test'}},
+    //Default config
+    //defaults: {mongoindexes: {urls: ['mongodb://localhost:27017/test']}},
+    //Hook config
     configure: function () {
+      sails.log.info('Config monngoindexes');
       var name = this.configKey;
+      var host = 'localhost';
+      var port = 27017;
+      var database = 'test';
+      sails.config[name] = {
+        urls: []
+      };
+      sails.log.warn('async is active as global');
       sails.config.globals.async = true;
       if(sails.config['connections']){
         var keys = Object.keys(sails.config['connections']);
         keys.forEach(function(item) {
           var connections = sails.config['connections'][item];
           if(reg.test(item)){
-            var host = 'localhost';
-            var port = 27017;
-            var database = 'test';
-            if(connections.host!='localhost') host= connections.host;
-            if(connections.port!=27017) port=connections.port;
-            if(connections.database!='test') database=connections.database;
-            sails.config[name] = {
-              url : 'mongodb://'+host+':'+port+'/'+database
-            };
+            sails.log.info('Add base: %s', item);
+            if(connections.host!=host) host= connections.host;
+            if(connections.port!=port) port=connections.port;
+            if(connections.database!=database) database=connections.database;
+            sails.config[name].urls.push(
+              'mongodb://'+host+':'+port+'/'+database
+            );            
           }
-
         }, this);
-      }
+      }else sails.config[name].urls.push(
+        'mongodb://'+host+':'+port+'/'+database
+      );
     },
+    //Start hook
     initialize: function (cb) {
-      if(sails.models){
-        var nameModels = Object.keys(sails.models);
-        mapModels(nameModels,cb);
-      }else cb();
+      async.mapLimit(
+        sails.config.mongoindexes.urls,
+        1,
+        function (item, next) {
+          if(sails.models){
+            var nameModels = Object.keys(sails.models);
+            mapModels(nameModels,next);
+          }else next();
+        },
+        cb
+      );
     }
+    //No routes for this hook
     //routes: {}
   }
 };
@@ -41,7 +59,7 @@ function mapModels(names,cb) {
 };
 
 function iterCollection(name,cb){
-async.mapLimit(sails.models[name].index,1,function iterIndex(item, next) {
+  async.map(sails.models[name].index,function iterIndex(item, next) {
     mongo.connect(sails.config.mongoindexes.url, function (err, db) {
       if(err) next(err);
       else{
