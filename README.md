@@ -1,5 +1,5 @@
 # sails-hook-mongoindexes
-Hook for sails and mongoDB
+Hook for [sails](http://sailsjs.org/) and mongoDB
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
@@ -12,7 +12,7 @@ Install
 ~~~
 npm install sails-hook-mongoindexes
 ~~~
-In config/connections.js
+In `config/connections.js`
 ~~~js
 module.exports.connections = {
   //It is important that the field contains the word "mongodb"
@@ -28,7 +28,7 @@ module.exports.connections = {
   othermongoDBServer:{}
 }
 ~~~
-In models, example User.js
+In models, example `User.js`
 ~~~js
 module.exports = {
   //Put names on your fields
