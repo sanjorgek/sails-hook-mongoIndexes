@@ -12,6 +12,22 @@ Install
 ~~~
 npm install sails-hook-mongoindexes
 ~~~
+In config/connections.js
+~~~js
+module.exports.connections = {
+  //It is important that the field contains the word "mongodb"
+  somethingMongodbServer:{
+    adapter: 'sails-mongo',
+    host: 'localhost',
+    port: 27017,
+    // user: 'username',
+    // password: 'password',
+    database: 'test'
+  },
+  //You can configure multiple databases with the same format
+  othermongoDBServer:{}
+}
+~~~
 In models, example User.js
 ~~~js
 module.exports = {
