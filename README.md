@@ -28,6 +28,15 @@ module.exports.connections = {
   othermongoDBServer:{}
 }
 ~~~
+also, is important to have "mongodb" word in name
+
+In `config/models.js`
+~~~
+module.exports.models = {
+  connection: 'somethingMongodbServer',
+  migrate: 'safe'
+};
+~~~
 In models, example `User.js`
 ~~~js
 module.exports = {
