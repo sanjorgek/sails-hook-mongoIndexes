@@ -1,8 +1,11 @@
 # sails-hook-mongoindexes
-Hook for [sails](http://sailsjs.org/) and mongoDB
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
+
+Hook for [sails](http://sailsjs.org/) and mongoDB
+
+  [![NPM][downloads-chart]][chart-url]
 
 ## About
 This hook allows us to write indexes for mongoDB 
@@ -31,7 +34,7 @@ module.exports.connections = {
 also, is important to have "mongodb" word in name
 
 In `config/models.js`
-~~~
+~~~js
 module.exports.models = {
   connection: 'somethingMongodbServer',
   migrate: 'safe'
@@ -86,3 +89,5 @@ This app set true async in sails.config.globals when configures this hook.
 [npm-url]: https://npmjs.org/package/sails-hook-mongoindexes
 [downloads-image]: https://img.shields.io/npm/dm/sails-hook-mongoindexes.svg
 [downloads-url]: https://npmjs.org/package/sails-hook-mongoindexes
+[downloads-chart]: https://nodei.co/npm-dl/sails-hook-mongoindexes.png?months=6&height=1
+[chart-url]: https://nodei.co/npm/sails-hook-mongoindexes/
