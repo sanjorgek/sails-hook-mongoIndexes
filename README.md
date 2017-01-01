@@ -2,13 +2,20 @@
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
+  [![Build Status][build-image]][build-url]
+  [![Code Climate][climate-image]][climate-url]
+  [![Issue Count][issue-image]][issue-url]
+  [![bitHound Overall Score][score-image]][score-url]
+  [![bitHound Dependencies][dep-image]][dep-url]
+  [![bitHound Dev Dependencies][devdep-image]][devdep-url]
+  [![bitHound Code][code-image]][code-url]
 
 Hook for [sails](http://sailsjs.org/) and mongoDB
 
-  [![NPM][downloads-chart]][chart-url]
-
 ## About
 This hook allows us to write indexes for mongoDB 
+
+  [![NPM][downloads-chart]][chart-url]
 
 ## Use
 Install
@@ -91,3 +98,17 @@ This app set true async in sails.config.globals when configures this hook.
 [downloads-url]: https://npmjs.org/package/sails-hook-mongoindexes
 [downloads-chart]: https://nodei.co/npm-dl/sails-hook-mongoindexes.png?months=6&height=1
 [chart-url]: https://nodei.co/npm/sails-hook-mongoindexes/
+[build-image]: https://travis-ci.org/sanjorgek/sails-hook-mongoindexes.svg
+[build-url]: https://travis-ci.org/sanjorgek/sails-hook-mongoindexes
+[code-image]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/badges/code.svg
+[code-url]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes
+[dep-image]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/badges/dependencies.svg
+[dep-url]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/bithound/dependencies/npm
+[devdep-image]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/badges/devDependencies.svg
+[devdep-url]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/bithound/dependencies/npm
+[score-image]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/badges/score.svg
+[score-url]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes
+[issue-image]: https://codeclimate.com/github/sanjorgek/sails-hook-mongoIndexes/badges/issue_count.svg
+[issue-url]: https://codeclimate.com/github/sanjorgek/sails-hook-mongoIndexes
+[climate-image]: https://codeclimate.com/github/sanjorgek/sails-hook-mongoIndexes/badges/gpa.svg
+[climate-url]: https://codeclimate.com/github/sanjorgek/sails-hook-mongoIndexes
