@@ -23,9 +23,9 @@ module.exports = function indexes(sails) {
           var connections = sails.config.connections[item];
           if(reg.test(item)){
             sails.log.info('Add base: %s', item);
-            if(connections.host!=host) host= connections.host;
-            if(connections.port!=port) port=connections.port;
-            if(connections.database!=database) database=connections.database;
+            if(connections.host!==host) host= connections.host;
+            if(connections.port!==port) port=connections.port;
+            if(connections.database!==database) database=connections.database;
             sails.config[name].urls.push(
               'mongodb://'+host+':'+port+'/'+database
             );            
@@ -42,8 +42,8 @@ module.exports = function indexes(sails) {
         function (url, next) {
           if(sails.models){
             var nameModels = Object.keys(sails.models);
-            mapModels(url,nameModels,next);
-          }else next();
+            return mapModels(url,nameModels,next);
+          }else return next();
         },
         cb
       );
@@ -61,10 +61,10 @@ function iterCollection(url){
   return function(name,cb){
     async.map(sails.models[name].index,function iterIndex(item, next) {
       mongo.connect(url, function (err, db) {
-        if(err) next(err);
+        if(err) return next(err);
         else{
           var collection = db.collection(name);
-          collection.createIndex(item.ind,item.ops,next);
+          return collection.createIndex(item.ind,item.ops,next);
         }
       });
     }, cb);
