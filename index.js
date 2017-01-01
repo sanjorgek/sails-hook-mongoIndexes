@@ -17,10 +17,10 @@ module.exports = function indexes(sails) {
       };
       sails.log.warn('async is active as global');
       sails.config.globals.async = true;
-      if(sails.config['connections']){
-        var keys = Object.keys(sails.config['connections']);
+      if(sails.config.connections){
+        var keys = Object.keys(sails.config.connections);
         keys.forEach(function(item) {
-          var connections = sails.config['connections'][item];
+          var connections = sails.config.connections[item];
           if(reg.test(item)){
             sails.log.info('Add base: %s', item);
             if(connections.host!=host) host= connections.host;
@@ -50,12 +50,12 @@ module.exports = function indexes(sails) {
     }
     //No routes for this hook
     //routes: {}
-  }
+  };
 };
 
 function mapModels(url, names,cb) {
   async.mapLimit(names, 1, iterCollection(url), cb);
-};
+}
 
 function iterCollection(url){
   return function(name,cb){
@@ -68,5 +68,5 @@ function iterCollection(url){
         }
       });
     }, cb);
-  }
-};
+  };
+}
