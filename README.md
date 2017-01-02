@@ -25,8 +25,8 @@ npm install sails-hook-mongoindexes
 In `config/connections.js`
 ~~~js
 module.exports.connections = {
-  //It is important that the field contains the word "mongodb"
   somethingMongodbServer:{
+    //You need sails-mongo adapter to work
     adapter: 'sails-mongo',
     host: 'localhost',
     port: 27017,
@@ -38,7 +38,6 @@ module.exports.connections = {
   othermongoDBServer:{}
 }
 ~~~
-also, is important to have "mongodb" word in name
 
 In `config/models.js`
 ~~~js
@@ -88,18 +87,14 @@ module.exports = {
 ~~~
 Thats all!
 
-## Info
-This app set true async in sails.config.globals when configures this hook.
-
-
 [npm-image]: https://img.shields.io/npm/v/sails-hook-mongoindexes.svg
 [npm-url]: https://npmjs.org/package/sails-hook-mongoindexes
 [downloads-image]: https://img.shields.io/npm/dm/sails-hook-mongoindexes.svg
 [downloads-url]: https://npmjs.org/package/sails-hook-mongoindexes
 [downloads-chart]: https://nodei.co/npm-dl/sails-hook-mongoindexes.png?months=6&height=1
 [chart-url]: https://nodei.co/npm/sails-hook-mongoindexes/
-[build-image]: https://travis-ci.org/sanjorgek/sails-hook-mongoindexes.svg
-[build-url]: https://travis-ci.org/sanjorgek/sails-hook-mongoindexes
+[build-image]: https://travis-ci.org/sanjorgek/sails-hook-mongoIndexes.svg
+[build-url]: https://travis-ci.org/sanjorgek/sails-hook-mongoIndexes
 [code-image]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/badges/code.svg
 [code-url]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes
 [dep-image]: https://www.bithound.io/github/sanjorgek/sails-hook-mongoindexes/badges/dependencies.svg

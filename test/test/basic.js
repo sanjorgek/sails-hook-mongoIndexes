@@ -11,11 +11,25 @@ describe('Basic tests ::', function() {
     Sails().lift({
       hooks: {
         // Load the hook
-        "mongoindexes": require('../'),
+        "mongoindexes": require('../../'),
         // Skip grunt (unless your hook uses it)
         "grunt": false
       },
-      log: {level: "error"}
+      log: {level: "error"},
+      models: {
+        connection: 'mongodbServer',
+        migrate: 'drop'
+      },
+      connections: {
+        mongodbServer: {
+          adapter: 'sails-mongo',
+          host: 'localhost',
+          port: 27017,
+          // user: 'username',
+          // password: 'password',
+          database: 'test'
+        }
+      }
     },function (err, _sails) {
       if (err) return done(err);
       sails = _sails;

@@ -1,10 +1,7 @@
 var mongo = require('mongodb').MongoClient;
-var reg = new RegExp(/[Mm]ongo[Dd][Bb]/);
 
 module.exports = function indexes(sails) {
   return {
-    //Default config
-    //defaults: {mongoindexes: {urls: ['mongodb://localhost:27017/test']}},
     //Hook config
     configure: function () {
       sails.log.info('Config monngoindexes');
@@ -21,7 +18,7 @@ module.exports = function indexes(sails) {
         var keys = Object.keys(sails.config.connections);
         keys.forEach(function(item) {
           var connections = sails.config.connections[item];
-          if(reg.test(item)){
+          if(connections.adapter==='sails-mongo'){
             sails.log.info('Add base: %s', item);
             if(connections.host!==host) host= connections.host;
             if(connections.port!==port) port=connections.port;
@@ -48,8 +45,6 @@ module.exports = function indexes(sails) {
         cb
       );
     }
-    //No routes for this hook
-    //routes: {}
   };
 };
 
