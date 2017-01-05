@@ -1,0 +1,8 @@
+title: sails-hook-mongoindexes
+description: This hook allows us to write indexes for mongoDB
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+- jekyll-mentions
